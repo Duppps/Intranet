@@ -1,6 +1,7 @@
 /API/node_modules
-
 /API/config.js
+
+/node_modules
 
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
