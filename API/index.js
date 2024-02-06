@@ -11,6 +11,7 @@ app.use(bodyParser.json());
 
 app.use('/api/funcionarios', funcionariosRouter);
 
+
 app.use((req, res, next) => {
     const error = new Error('Rota não encontrada');
     error.status = 404;
