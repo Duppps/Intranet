@@ -1,6 +1,7 @@
 import Header from '../../components/header';
 import Aniversariantes from './aniversariantes';
 import ProxAniversariantes from './proxAniversariantes';
+import CarouselHome from './carousel';
 
 function Home() {
     return (
@@ -12,7 +13,9 @@ function Home() {
                         <Aniversariantes />
                         <ProxAniversariantes />
                     </div>
-                    <div className='border text-end col-span-9'>asfasfasf</div>
+                    <div className='col-span-9'>
+                        <CarouselHome />
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,26 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import Lista from './components/lista';
+import { Get } from '../../components/request.js';
 
 function ProxAniversariantes() {
     const [proxAniversariantes, setProxAniversariantes] = useState([]);
 
     useEffect(() => {
-        const fetchAniversariantes = async () => {
+        const get = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/api/funcionarios/proxAniversariantes?status=ativos');
-                setProxAniversariantes(response.data);                
+                const data = await Get('http://localhost:3000/v1/funcionarios/proxAniversariantes?status=ativos');
+                setProxAniversariantes(data);
             } catch (error) {
                 console.error('Erro ao obter aniversariantes:', error);
             }
-        };
+        }
 
-        fetchAniversariantes();
+        get();
+
     }, []);
 
     return (
         <div className='mt-4'>
-            <Lista titulo={'Próximos aniversariantes'} data={proxAniversariantes}></Lista>            
+            <Lista titulo={'Próximos aniversariantes'} data={proxAniversariantes}></Lista>
         </div >
     );
 
