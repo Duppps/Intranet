@@ -2,6 +2,7 @@ import Header from '../../components/header';
 import Aniversariantes from './aniversariantes';
 import ProxAniversariantes from './proxAniversariantes';
 import CarouselHome from './carousel';
+import TempoEmpresa from './tempoEmpresa';
 
 function Home() {
     return (
@@ -11,6 +12,7 @@ function Home() {
                 <div className='grid grid-cols-12 gap-1'>
                     <div className='col-span-3'>
                         <Aniversariantes />
+                        <TempoEmpresa />
                         <ProxAniversariantes />
                     </div>
                     <div className='col-span-9'>

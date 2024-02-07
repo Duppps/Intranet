@@ -28,7 +28,7 @@ const getProxAniversariantes = (req, res) => {
     const status = req.query.status;
 
     let statusCondition = '';
-    
+
     if (status === 'ativos') {
         statusCondition = ' AND desligado != 1';
     } else if (status === 'desligados') {
@@ -57,8 +57,33 @@ const getProxAniversariantes = (req, res) => {
     });
 }
 
+const getTempoEmpresa = (req, res) => {
+    const status = req.query.status;
+
+    let statusCondition = '';
+    if (status === 'ativos') {
+        statusCondition = ' AND desligado != 1';
+    } else if (status === 'desligados') {
+        statusCondition = ' AND desligado = 1';
+    } else if (status === '') {
+        statusCondition = '';
+    }
+
+    const consulta = `SELECT * FROM funcionarios tbl WHERE (MONTH(tbl.admissao) = MONTH(NOW()) AND DAY(tbl.admissao) = DAY(NOW()))${statusCondition}`;
+
+    pool.query(consulta, (error, results) => {
+        if (error) {
+            console.error('Erro ao obter os dados:', error);
+            res.status(500).send('Erro interno do servidor.');
+        } else {
+            res.status(200).json(results);
+        }
+    });
+}
+
 
 module.exports = {
     getAniversariantes,
-    getProxAniversariantes
+    getProxAniversariantes,
+    getTempoEmpresa
 };
