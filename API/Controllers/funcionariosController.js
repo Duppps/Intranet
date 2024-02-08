@@ -37,7 +37,7 @@ const getProxAniversariantes = (req, res) => {
         statusCondition = '';
     }
 
-    const consulta = `SELECT *
+    const consulta = `SELECT *, DATE_FORMAT(nascimento, '%m/%d') AS dataVisualizacao
                         FROM funcionarios
                         WHERE (DATE(CONCAT(YEAR(CURDATE()), RIGHT(nascimento, 6)))
                             BETWEEN 
@@ -69,7 +69,12 @@ const getTempoEmpresa = (req, res) => {
         statusCondition = '';
     }
 
-    const consulta = `SELECT * FROM funcionarios tbl WHERE (MONTH(tbl.admissao) = MONTH(NOW()) AND DAY(tbl.admissao) = DAY(NOW()))${statusCondition}`;
+    const consulta = `
+        SELECT *, CONCAT(FLOOR(DATEDIFF(NOW(), admissao) / 365), ' anos') AS dataVisualizacao
+        FROM funcionarios tbl 
+        WHERE 
+            (MONTH(tbl.admissao) = MONTH(NOW()) AND DAY(tbl.admissao) = DAY(NOW()))
+            ${statusCondition}`;
 
     pool.query(consulta, (error, results) => {
         if (error) {

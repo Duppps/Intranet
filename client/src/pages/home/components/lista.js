@@ -20,7 +20,7 @@ function ListaMenu({ titulo, data }) {
                                         <span className="text-sm">{user.funcao}</span> <br />
                                     </div>
                                     <div className='col-span-1 text-end'>
-                                        <span className="text-sm border-b border-red-400">{dataAniversario}</span> <br />
+                                        <span className="text-sm border-b border-red-400">{user.dataVisualizacao}</span> <br />
                                     </div>
                                 </li>
                             );
