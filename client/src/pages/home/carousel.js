@@ -20,10 +20,13 @@ function CarouselHome() {
     }, []);
 
     return (
-        <div>
+        <div className='mt-2 p-2' style={{ height: "416px" }}>
             {carousel.length > 0 && (
-                <Carousel>
-                    <div>asfsaf</div>
+                <Carousel
+                    leftControl={carousel.length > 1 ? '' : ' '}
+                    rightControl={carousel.length > 1 ? '' : ' '}
+                    pauseOnHover
+                >
                     {carousel.map(carrossel => (
                         <img key={carrossel.id} src={`${srcCarousel}/${carrossel.img}`} alt="IMG CAROUSEL" />
                     ))}
