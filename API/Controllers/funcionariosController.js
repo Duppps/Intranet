@@ -37,7 +37,7 @@ const getProxAniversariantes = (req, res) => {
         statusCondition = '';
     }
 
-    const consulta = `SELECT *, DATE_FORMAT(nascimento, '%m/%d') AS dataVisualizacao
+    const consulta = `SELECT *, DATE_FORMAT(nascimento, '%d/%m') AS dataVisualizacao
                         FROM funcionarios
                         WHERE (DATE(CONCAT(YEAR(CURDATE()), RIGHT(nascimento, 6)))
                             BETWEEN 

@@ -20,7 +20,7 @@ function CarouselHome() {
     }, []);
 
     return (
-        <div className='mt-2 p-2' style={{ height: "416px" }}>
+        <div style={{ height: "416px" }}>
             {carousel.length > 0 && (
                 <Carousel
                     leftControl={carousel.length > 1 ? '' : ' '}

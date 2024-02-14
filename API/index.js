@@ -5,6 +5,7 @@ const path = require('path');
 
 const funcionariosRouter = require('./Routes/funcionariosRouter');
 const carouselRouter = require('./Routes/carouselRouter');
+const feriasRouter = require('./Routes/feriasRouter');
 
 const app = express();
 const publicDirectory = path.join(__dirname, 'public');
@@ -14,6 +15,7 @@ app.use(bodyParser.json());
 
 app.use('/v1/funcionarios', funcionariosRouter);
 app.use('/v1/carousel', carouselRouter);
+app.use('/v1/ferias', feriasRouter);
 
 app.use('/img/carousel', express.static(path.join(publicDirectory, 'carousel')));
 

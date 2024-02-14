@@ -3,6 +3,7 @@ import Aniversariantes from './aniversariantes';
 import ProxAniversariantes from './proxAniversariantes';
 import CarouselHome from './carousel';
 import TempoEmpresa from './tempoEmpresa';
+import Feriantes from './ferias';
 
 function Home() {
     return (
@@ -15,8 +16,14 @@ function Home() {
                         <TempoEmpresa />
                         <ProxAniversariantes />
                     </div>
-                    <div className='col-span-9'>
+                    <div className='col-span-9 mt-4 px-2'>
                         <CarouselHome />
+                        <div className='grid grid-cols-5 gap-1'>
+                            <div className='col-span-2'>
+                                <Feriantes />
+                            </div>
+                            <div className='border col-span-3'></div>
+                        </div>
                     </div>
                 </div>
             </div>

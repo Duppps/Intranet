@@ -8,11 +8,6 @@ function ListaMenu({ titulo, data }) {
                     <span className="font-bold text-2xl">{titulo}</span>
                     <ul className='list-none mt-2 border rounded-lg'>
                         {data.map(user => {
-                            const dataNascimento = new Date(user.nascimento);
-                            const diaNascimento = String(dataNascimento.getDate()).padStart(2, '0');
-                            const mesNascimento = String(dataNascimento.getMonth() + 1).padStart(2, '0');
-                            const dataAniversario = `${diaNascimento}/${mesNascimento}`;
-
                             return (
                                 <li key={user.id} className="grid grid-cols-4 border-b px-2 py-1">
                                     <div className='col-span-3'>
