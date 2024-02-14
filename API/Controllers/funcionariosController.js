@@ -37,7 +37,7 @@ const getProxAniversariantes = (req, res) => {
         statusCondition = '';
     }
 
-    const consulta = `SELECT *, DATE_FORMAT(nascimento, '%d/%m') AS dataVisualizacao
+    const consulta = `SELECT *, DATE_FORMAT(nascimento, '%d/%m') AS dataView
                         FROM funcionarios
                         WHERE (DATE(CONCAT(YEAR(CURDATE()), RIGHT(nascimento, 6)))
                             BETWEEN 
@@ -70,7 +70,7 @@ const getTempoEmpresa = (req, res) => {
     }
 
     const consulta = `
-        SELECT *, CONCAT(FLOOR(DATEDIFF(NOW(), admissao) / 365), ' anos') AS dataVisualizacao
+        SELECT *, CONCAT(FLOOR(DATEDIFF(NOW(), admissao) / 365), ' anos') AS dataView
         FROM funcionarios tbl 
         WHERE 
             (MONTH(tbl.admissao) = MONTH(NOW()) AND DAY(tbl.admissao) = DAY(NOW()))

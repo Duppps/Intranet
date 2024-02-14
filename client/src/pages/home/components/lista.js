@@ -7,19 +7,19 @@ function ListaMenu({ titulo, data }) {
                 <>
                     <span className="font-bold text-2xl">{titulo}</span>
                     <ul className='list-none mt-2 border rounded-lg'>
-                        {data.map(user => {
-                            return (
-                                <li key={user.id} className="grid grid-cols-4 border-b px-2 py-1">
-                                    <div className='col-span-3'>
-                                        <span className="font-medium">{user.nome}</span> <br />
-                                        <span className="text-sm">{user.funcao}</span> <br />
+                        {data.map(item => (
+                            <li key={item.id} className="border-b px-2 py-1">
+                                <div className="grid grid-cols-3">
+                                    <div className="col-span-2">
+                                        <span className='font-semibold'>{item.nome}</span> <br />
+                                        <span className='font-light'>{item.funcao}</span>
                                     </div>
-                                    <div className='col-span-1 text-end'>
-                                        <span className="text-sm border-b border-red-400">{user.dataVisualizacao}</span> <br />
+                                    <div className="text-end items-center grid justify-items-end">
+                                        <span className="border-b border-red-400">{item.dataView}</span>
                                     </div>
-                                </li>
-                            );
-                        })}
+                                </div>
+                            </li>
+                        ))}
                     </ul>
                 </>
             )}
