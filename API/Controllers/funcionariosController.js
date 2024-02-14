@@ -86,9 +86,27 @@ const getTempoEmpresa = (req, res) => {
     });
 }
 
+const getAdmitidos = (req, res) => {
+    const consulta = `SELECT * 
+                        FROM funcionarios 
+                        WHERE desligado != 1 
+                            AND admissao BETWEEN DATE_SUB(CURRENT_DATE(), INTERVAL 6 DAY) AND CURRENT_DATE() 
+                        ORDER BY admissao DESC;`;
+
+    pool.query(consulta, (error, results) => {
+        if (error) {
+            console.error(error);
+            res.status(500).send('Erro interno do servidor.');
+        } else {
+            res.status(200).json(results);
+        }
+    });
+};
+
 
 module.exports = {
     getAniversariantes,
     getProxAniversariantes,
-    getTempoEmpresa
+    getTempoEmpresa,
+    getAdmitidos
 };

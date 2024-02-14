@@ -9,4 +9,6 @@ router.get('/proxAniversariantes', funcionariosController.getProxAniversariantes
 
 router.get('/tempoEmpresa', funcionariosController.getTempoEmpresa);
 
+router.get('/admitidos', funcionariosController.getAdmitidos);
+
 module.exports = router;

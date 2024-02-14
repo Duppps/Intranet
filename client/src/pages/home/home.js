@@ -22,7 +22,7 @@ function Home() {
                             <div className='col-span-2'>
                                 <Feriantes />
                             </div>
-                            <div className='border col-span-3'></div>
+                            <div className='col-span-3'></div>
                         </div>
                     </div>
                 </div>
