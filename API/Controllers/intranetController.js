@@ -3,6 +3,7 @@ const Data = require('../Utils/Date.js');
 const funcionariosModel = require('../Models/funcionariosModel');
 const feriasModel = require('../Models/feriasModel');
 const carrosselModel = require('../Models/carrosselModel');
+const vagasModel = require('../Models/vagasModel.js');
 
 async function getAllData(req, res) {
     try {
@@ -64,6 +65,7 @@ async function getAllData(req, res) {
         
         const feriantes = await feriasModel.getFeriantes();
         const carrossel = await carrosselModel.getCarouselAtivos();
+        const vagas = await vagasModel.getVagas();
 
         const data = {
             aniversariantes,
@@ -72,7 +74,8 @@ async function getAllData(req, res) {
             admitidos,
             desligados,
             feriantes,
-            carrossel
+            carrossel,
+            vagas
         };
 
         res.status(200).json(data);

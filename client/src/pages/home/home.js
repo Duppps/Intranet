@@ -12,7 +12,7 @@ function Home() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const dados = await axios.get('http://localhost:3000/v1/intranet/');
+                const dados = await axios.get('http://localhost:3000/v1/intranet');
                 setDados(dados.data);
             } catch (error) {
                 console.error(error);
@@ -25,8 +25,17 @@ function Home() {
 
 
     if (!dados) {
-        return <div>Carregando...</div>;
+        return <div></div>;
     }
+
+    const vagas = dados.vagas.map(objeto => {
+        return {
+            nome: objeto.titulo_cargo,
+            funcao: '',
+            dataView: objeto.titulo_filial
+        };
+    });
+
 
     return (
         <div>
@@ -58,23 +67,14 @@ function Home() {
                                 </Carousel>
                             )}
                         </div>
-                        <div className='grid grid-cols-5 gap-5'>
-                            <div className='col-span-2'>
-                                <div className='mt-4'>
-                                    <Lista titulo={'Informativo de férias'} data={dados.feriantes}></Lista>
-                                </div >
-                            </div>
-                            {/* <div className='mt-4'>
-                                <Lista titulo={'Vagas'} data={dados.vagas}></Lista>
-                            </div > */}
-                            <div className='col-span-3'>
-                                <div className='mt-4'>
-                                    <Lista titulo={'Funcionários admitidos'} data={dados.admitidos}></Lista>
-                                </div >
-                                <div className='mt-4'>
-                                    <Lista titulo={'Funcionários desligados'} data={dados.desligados}></Lista>
-                                </div >
-                            </div>
+                        <div className='grid grid-cols-2 gap-5 mt-4 border-b pb-5'>
+                            <Lista titulo={'Informativo de férias'} data={dados.feriantes}></Lista>
+                            <Lista titulo={'Vagas'} data={vagas}></Lista>
+
+                        </div>
+                        <div className='grid grid-cols-2 gap-5 mt-4'>
+                            <Lista titulo={'Funcionários admitidos'} data={dados.admitidos}></Lista>
+                            <Lista titulo={'Funcionários desligados'} data={dados.desligados}></Lista>
                         </div>
                     </div>
                 </div>

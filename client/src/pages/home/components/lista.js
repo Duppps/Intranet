@@ -1,6 +1,6 @@
 import React from "react";
 
-function ListaMenu({ titulo, data }) {
+function ListaMenu({ titulo, data }){
     return (
         <div>
             {data.length > 0 && (
@@ -8,7 +8,7 @@ function ListaMenu({ titulo, data }) {
                     <span className="font-bold text-2xl">{titulo}</span>
                     <ul className='list-none mt-2 border rounded-lg'>
                         {data.map(item => (
-                            <li key={item.id} className="border-b px-2 py-1">
+                            <li key={item.id} className="border-b px-3 py-2">
                                 <div className="grid grid-cols-3">
                                     <div className="col-span-2">
                                         <span className='font-semibold'>{item.nome}</span> <br />
