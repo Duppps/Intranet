@@ -11,4 +11,6 @@ router.get('/tempoEmpresa', funcionariosController.getTempoEmpresa);
 
 router.get('/admitidos', funcionariosController.getAdmitidos);
 
+router.get('/desligados', funcionariosController.getDesligados);
+
 module.exports = router;
