@@ -2,7 +2,7 @@ const pool = require('../config');
 
 function getFeriantes() {
     const consulta = `
-                    SELECT *, CONCAT('Retorno ', DATE_FORMAT(retorno, '%d/%m')) AS dataView
+                    SELECT *
                         FROM ferias
                         WHERE inicio <= CURRENT_DATE() AND retorno > CURRENT_DATE()
                         ORDER BY retorno`;

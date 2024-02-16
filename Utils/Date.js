@@ -24,14 +24,14 @@ class Data {
      * Verifica se uma data está dentro do intervalo de hoje e outra data especificada (DM)
      * @param data A data a ser procurada.
      * @param interval Intervalo de dias.
-     * @param ignoreYear Default false, ignorar o ano durante a verificação.
+     * @param ignoreYear Default false, true caso ignorar o ano durante a verificação.
      * @returns True se foi encontrada ou False se não.     * 
      */
     static searchBetweenTodayAndInterval(data, interval, ignoreYear = false) {
         const hoje = new Date();
 
         const proxDias = new Date(hoje);
-        proxDias.setDate(hoje.getDate() + interval);
+        proxDias.setDate(proxDias.getDate() + interval);
 
         if (ignoreYear) {
             const hojeTime = this.resetYear(hoje);
@@ -52,8 +52,12 @@ class Data {
                 }
             }
         } else {
+            const dataTime = new Date(data).getTime();
+            const hojeTime = hoje.getTime();
+            const proxDiasTime = proxDias.getTime();
+            
             if (interval < 0) {
-                if (data < hoje && data >= proxDias) {
+                if (dataTime < hojeTime && dataTime >= proxDiasTime) {
                     return true;
                 } else {
                     return false;
@@ -84,6 +88,13 @@ class Data {
         } else {
             return false;
         }
+    }
+
+    static ExtractYear(date) {
+        const tempoDeEmpresa = new Date() - new Date(date);
+        const milissegundosEmUmAno = 1000 * 60 * 60 * 24 * 365;
+        const anosDeEmpresa = Math.floor(tempoDeEmpresa / milissegundosEmUmAno);
+        return anosDeEmpresa;
     }
 }
 
