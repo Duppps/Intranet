@@ -1,51 +1,29 @@
+const Data = require('../Utils/Date.js');
+
 const funcionariosModel = require('../Models/funcionariosModel');
 const feriasModel = require('../Models/feriasModel');
 const carrosselModel = require('../Models/carrosselModel');
 
-function formataData(data) {
-    options = {
-        month: 'numeric',
-        day: 'numeric'
-    }
-
-    const dataFinal = new Date(data).toLocaleDateString('pt', options);
-    return dataFinal;
-}
-
-function zerarAno(data) {
-    const dataZerada = new Date(data);
-    dataZerada.setFullYear(1970);
-    return dataZerada.getTime();
-}
-
 async function getAllData(req, res) {
     try {
-        const funcionarios = await funcionariosModel.getAll();
-        const hoje = new Date();
-        const hojeFormatado = formataData(hoje);
-
-        const proxDias = new Date(hoje);
-        proxDias.setDate(hoje.getDate() + 12);
-
-        const hojeTime = zerarAno(hoje);
-        const prxDias = zerarAno(proxDias);
+        const funcionarios = await funcionariosModel.getAll();         
 
         const aniversariantes = funcionarios
             .filter(funcionario => {
-                const diaAniversario = formataData(funcionario.nascimento);
+                const aniversariante = Data.dmCompareDates(new Date(), funcionario.nascimento);
 
-                return (diaAniversario === hojeFormatado) && (funcionario.desligado != 1);
+                return aniversariante && (funcionario.desligado != 1);
             });
 
         const proxAniversariantes = funcionarios
             .filter(funcionario => {
-                const aniversarioTime = zerarAno(funcionario.nascimento);
+                const dataEncontrada = Data.searchBetweenTodayAndInterval(funcionario.nascimento, 12, true);
                 return (
-                    aniversarioTime > hojeTime && aniversarioTime <= prxDias && funcionario.desligado !== 1
+                    dataEncontrada && funcionario.desligado !== 1
                 );
             })
             .map(funcionario => {
-                const dataNascimento = formataData(funcionario.nascimento);
+                const dataNascimento = Data.formatDateToDM(funcionario.nascimento);
                 return {
                     ...funcionario,
                     dataView: dataNascimento
@@ -57,13 +35,33 @@ async function getAllData(req, res) {
 
         const tempoEmpresa = funcionarios
             .filter(funcionario => {
-                const diaTempoEmpresa = formataData(funcionario.admissao);
+                const tempoEmpresa = Data.dmCompareDates(new Date(), funcionarios.admissao);
 
-                return (diaTempoEmpresa === hojeFormatado) && (funcionario.desligado != 1);
+                return tempoEmpresa && (funcionario.desligado != 1);
             });
 
-        const admitidos = await funcionariosModel.getAdmitidos();
-        const desligados = await funcionariosModel.getDesligados();
+        const admitidos = funcionarios
+            .filter(funcionario => {
+                const dataEncontrada = Data.searchBetweenTodayAndInterval(funcionario.admissao, -12);
+                return (
+                    dataEncontrada && funcionario.desligado !== 1
+                );
+            })
+            .sort((a, b) => {
+                return b.admissao - a.admissao;
+            });
+
+            const desligados = funcionarios
+            .filter(funcionario => {
+                const dataEncontrada = Data.searchBetweenTodayAndInterval(funcionario.data_deslig, -6);
+                return (
+                    dataEncontrada
+                );
+            })
+            .sort((a, b) => {
+                return b.data_deslig - a.data_deslig;
+            });
+        
         const feriantes = await feriasModel.getFeriantes();
         const carrossel = await carrosselModel.getCarouselAtivos();
 
