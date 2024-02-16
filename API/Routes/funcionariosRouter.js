@@ -13,4 +13,6 @@ router.get('/admitidos', funcionariosController.getAdmitidos);
 
 router.get('/desligados', funcionariosController.getDesligados);
 
+router.get('/administrativo', funcionariosController.getAdministrativo);
+
 module.exports = router;

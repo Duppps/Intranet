@@ -116,11 +116,33 @@ function getDesligados() {
     });
 }
 
+function getAdministrativo() {
+    const consulta = `
+                SELECT  id, nome, email, telefone, funcao, setor
+                FROM funcionarios
+                    WHERE desligado != 1 
+                    AND setor<>'motorista'
+                    AND setor<>''
+    `;
+
+    return new Promise((resolve, reject) => {
+        pool.query(consulta, (error, results) => {
+            if (error) {
+                console.error(error);
+                reject('Erro interno do servidor.');
+            } else {
+                resolve(results);
+            }
+        });
+    });
+}
+
 module.exports = {
     getAniversariantes,
     getProxAniversariantes,
     getTempoEmpresa,
     getAdmitidos,
     getDesligados,
-    getAll
+    getAll,
+    getAdministrativo
 };
