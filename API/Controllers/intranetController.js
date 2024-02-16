@@ -50,10 +50,18 @@ async function getAllData(req, res) {
                     ...funcionario,
                     dataView: dataNascimento
                 };
+            })
+            .sort((a, b) => {
+                return a.dataView.localeCompare(b.dataView);
             });
 
+        const tempoEmpresa = funcionarios
+            .filter(funcionario => {
+                const diaTempoEmpresa = formataData(funcionario.admissao);
 
-        const tempoEmpresa = await funcionariosModel.getTempoEmpresa();
+                return (diaTempoEmpresa === hojeFormatado) && (funcionario.desligado != 1);
+            });
+
         const admitidos = await funcionariosModel.getAdmitidos();
         const desligados = await funcionariosModel.getDesligados();
         const feriantes = await feriasModel.getFeriantes();
