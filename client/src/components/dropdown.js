@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment } from 'react';
 import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 
@@ -6,18 +6,21 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-function DropdownItem({ text, link }) {
+function DropdownItem({ text, link, icon, targetBlank }) {
     return (
         <Menu.Item>
             {({ active }) => (
-                <a
+                <a                    
                     href={link}
+                    target={targetBlank ? '_blank' : ''}
+                    rel={targetBlank ? 'noopener noreferrer' : ''}
                     className={classNames(
-                        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                        active ? 'bg-gray-800 text-red-400' : 'text-gray-100',
                         'block px-4 py-2 text-sm'
                     )}
                 >
-                    {text}
+                    {icon && <img src={icon} className="rounded inline me-3" style={{ width: "20px", height: "20px" }} />}
+                    <span>{text}</span>
                 </a>
             )}
         </Menu.Item>
@@ -49,7 +52,7 @@ function Dropdown({ text, children, dividy }) {
                 leaveFrom="transform opacity-100 scale-100"
                 leaveTo="transform opacity-0 scale-95"
             >
-                <Menu.Items className={`absolute left-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none ${divideClasses}`}>
+                <Menu.Items className={`bg-gray-950 border border-gray-500 absolute left-0 z-10 mt-2 w-56 origin-top-right rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none ${divideClasses}`}>
                         {React.Children.map(children, (child) => {
                             if (React.isValidElement(child)) {
                                 return React.cloneElement(child, {});

@@ -39,6 +39,14 @@ function Header() {
                             <DropdownItem text="Treinamentos" link="#"></DropdownItem>
                         </Dropdown>
                         <Dropdown text="Links Externos">
+                            <DropdownItem text="Avacorp" link="https://theotransportes.avaconcloud.com" icon="http://localhost:3000/img/icons/logo-avacorp-20x-20.webp" targetBlank></DropdownItem>
+                            <DropdownItem text="Avacorp TS" link="https://globuscloud.skyinone.net/" icon="http://localhost:3000/img/icons/1551900354534.jpeg" targetBlank></DropdownItem>
+                            <DropdownItem text="QualP" link="https://qualp.com.br" icon="http://localhost:3000/img/icons/logo-qualp-20x20.webp" targetBlank></DropdownItem>
+                            <DropdownItem text="Portal do Cliente Praxio" link="https://portaldocliente.praxio.com.br/Ticket" icon="http://localhost:3000/img/icons/logo-pdcp-20x20.webp" targetBlank></DropdownItem>
+                            <DropdownItem text="Axyma" link="https://auditor.axyma.com.br" icon="http://localhost:3000/img/icons/Solucoes-que-geram-valor-Axyma-Logo.png" targetBlank></DropdownItem>
+                            <DropdownItem text="Pontomais" link="https://app2.pontomais.com.br" icon="http://localhost:3000/img/icons/pontomais.webp" targetBlank></DropdownItem>
+                            <DropdownItem text="Cefis" link="https://cefis.com.br/portal/cursos" icon="http://localhost:3000/img/icons/cefis20x20.webp" targetBlank></DropdownItem>
+                            <DropdownItem text="Loyal" link="https://theotransportes.loyal-solutions.com/loyal6/login.jsp" icon="http://localhost:3000/img/icons/loyal.png" targetBlank></DropdownItem>
                         </Dropdown>
                     </div>
                 </div>

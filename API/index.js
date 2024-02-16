@@ -22,6 +22,7 @@ app.use('/v1/vagas', vagasRouter);
 app.use('/v1/intranet', intranetRouter);
 
 app.use('/img/carousel', express.static(path.join(publicDirectory, 'carousel')));
+app.use('/img/icons', express.static(path.join(publicDirectory, 'icons')));
 
 app.use((req, res, next) => {
     const error = new Error('Rota não encontrada');
