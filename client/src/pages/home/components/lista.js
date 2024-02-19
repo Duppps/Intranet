@@ -1,6 +1,6 @@
 import React from "react";
 
-function ListaMenu({ titulo, data }){
+function ListaMenu({ titulo, data }) {
     return (
         <div>
             {data.length > 0 && (
@@ -15,7 +15,7 @@ function ListaMenu({ titulo, data }){
                                         <span className='font-light'>{item.descricao}</span>
                                     </div>
                                     <div className="text-end items-center grid justify-items-end col-span-3">
-                                        <span className="border-b border-red-400">{item.view}</span>
+                                        <span className="underline decoration-red-400 underline-offset-4">{item.view}</span>
                                     </div>
                                 </div>
                             </li>

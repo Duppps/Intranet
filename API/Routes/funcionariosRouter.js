@@ -15,4 +15,6 @@ router.get('/desligados', funcionariosController.getDesligados);
 
 router.get('/administrativo', funcionariosController.getAdministrativo);
 
+router.get('/manutencao', funcionariosController.getManutencao);
+
 module.exports = router;

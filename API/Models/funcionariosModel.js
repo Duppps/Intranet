@@ -122,7 +122,28 @@ function getAdministrativo() {
                 FROM funcionarios
                     WHERE desligado != 1 
                     AND setor<>'motorista'
-                    AND setor<>''
+                    AND setor<>'
+                ORDER BY nome'
+    `;
+
+    return new Promise((resolve, reject) => {
+        pool.query(consulta, (error, results) => {
+            if (error) {
+                console.error(error);
+                reject('Erro interno do servidor.');
+            } else {
+                resolve(results);
+            }
+        });
+    });
+}
+
+function getManutencao() {
+    const consulta = `
+                SELECT nome, telefone, funcao
+                    FROM funcionarios
+                        WHERE desligado != 1 
+                        AND setor = 'motorista' 
     `;
 
     return new Promise((resolve, reject) => {
@@ -144,5 +165,6 @@ module.exports = {
     getAdmitidos,
     getDesligados,
     getAll,
-    getAdministrativo
+    getAdministrativo,
+    getManutencao
 };

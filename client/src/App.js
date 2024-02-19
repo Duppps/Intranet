@@ -1,7 +1,7 @@
 import './App.css';
 import './input.css';
 import Home from './pages/home/home.js';
-import ContatosAdm from './pages/contatos/contatosAdmin.js';
+import {ContatosAdm, ContatosManutencao} from './pages/contatos/contatos.js';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 
@@ -10,7 +10,8 @@ function App() {
     <Router>
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/Contatos/Administrativo' element={<ContatosAdm />} />
+        <Route path='/contatos/administrativo' element={<ContatosAdm />} />
+        <Route path='/contatos/manutencao' element={<ContatosManutencao />} />
       </Routes>
     </Router>
   );

@@ -1,12 +1,9 @@
 class Data {
     static formatDateToDM(data) {
-        const options = {
-            month: 'numeric',
-            day: 'numeric'
-        }
+        const dataToFormat = new Date(data);
 
-        const dataFinal = new Date(data).toLocaleDateString('pt', options);
-        return dataFinal;
+        const formattedDate = String(dataToFormat.getDate()).padStart(2, '0') + '/' + String(dataToFormat.getMonth() + 1).padStart(2, '0');
+        return formattedDate;
     }
 
     /**
@@ -55,7 +52,7 @@ class Data {
             const dataTime = new Date(data).getTime();
             const hojeTime = hoje.getTime();
             const proxDiasTime = proxDias.getTime();
-            
+
             if (interval < 0) {
                 if (dataTime < hojeTime && dataTime >= proxDiasTime) {
                     return true;

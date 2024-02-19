@@ -61,11 +61,22 @@ async function getAdministrativo(req, res) {
     }
 }
 
+async function getManutencao(req, res) {
+    try {
+        const data = await funcionariosModel.getManutencao();
+        res.status(200).json(data);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Erro interno do servidor.');
+    }
+}
+
 module.exports = {
     getAniversariantes,
     getProxAniversariantes,
     getTempoEmpresa,
     getAdmitidos,
     getDesligados,
-    getAdministrativo
+    getAdministrativo,
+    getManutencao
 };

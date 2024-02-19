@@ -1,4 +1,4 @@
-import Data from './Date.js';
+const Data = require('./Date.js');
 
 class Funcionario {
     constructor({ id, nome, funcao, nascimento, admissao, desligado, data_deslig }) {
@@ -18,6 +18,7 @@ class Funcionario {
             id: this.id,
             nome: this.nome,
             funcao: this.funcao,
+            status: this.desligado,
             data_aniversario: Data.formatDateToDM(this.nascimento),
             tempo_empresa: tempoEmpresa,
             aniversariante: this.Birthday(),
@@ -49,4 +50,4 @@ class Funcionario {
     }
 }
 
-export default Funcionario;
+module.exports = Funcionario;

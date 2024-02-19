@@ -28,8 +28,8 @@ function Header() {
                         <ItemLista text="SisOS" link="https://intranet.theotransportes.com/SisOS" />
                         <Dropdown text="Contatos" dividy="true">
                             <div className='py-1'>
-                                <DropdownItem text="Administrativo / Operacional" link="Contatos/Administrativo"></DropdownItem>
-                                <DropdownItem text="Frota" link="#"></DropdownItem>
+                                <DropdownItem text="Administrativo / Operacional" link="contatos/administrativo"></DropdownItem>
+                                <DropdownItem text="Frota" link="/contatos/manutencao"></DropdownItem>
                             </div>
                             <DropdownItem text="Ramais Matriz" link="#"></DropdownItem>
                         </Dropdown>
