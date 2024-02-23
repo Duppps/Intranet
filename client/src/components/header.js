@@ -24,11 +24,11 @@ function Header() {
             <div className='bg-black p-3 text-white'>
                 <div className="container bg-black mx-auto max-w-screen-xl">
                     <div className="flex space-x-8">
-                        <ItemLista text="Home" link="https://intranet.theotransportes.com" />
+                        <ItemLista text="Home" link="/" />
                         <ItemLista text="SisOS" link="https://intranet.theotransportes.com/SisOS" />
                         <Dropdown text="Contatos" dividy="true">
                             <div className='py-1'>
-                                <DropdownItem text="Administrativo / Operacional" link="contatos/administrativo"></DropdownItem>
+                                <DropdownItem text="Administrativo / Operacional" link="/contatos/administrativo"></DropdownItem>
                                 <DropdownItem text="Frota" link="/contatos/manutencao"></DropdownItem>
                             </div>
                             <DropdownItem text="Ramais Matriz" link="#"></DropdownItem>

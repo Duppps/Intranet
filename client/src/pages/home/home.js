@@ -44,8 +44,11 @@ function Home() {
                             )}
                         </div>
                         <div className='mt-4'>
+                            <iframe className='w-full' src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FSao_Paulo&bgcolor=%23ffffff&showPrint=0&showTabs=0&showCalendars=0&showTz=0&showTitle=0&src=Y18zZTRhNGU3MjAwYzdjZDEzYTY2MDM0MzEwNGJjMWM1ODAwMzg2MzEzMWQwNDA4MzUzZTM3NTA2ZTM2M2E3NGJiQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23E4C441" style={{ height: "260px" }} frameborder="0" />
+                        </div>
+                        <div className='mt-4'>
                             <Lista titulo={'Tempo de empresa'} data={dados.tempoEmpresa}></Lista>
-                        </div >
+                        </div>
                         <div className='mt-4'>
                             <Lista titulo={'Próximos aniversariantes'} data={dados.proxAniversariantes}></Lista>
                         </div >

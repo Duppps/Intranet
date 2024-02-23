@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Header from '../../components/header';
 import Tabela from './Tabela';
 
@@ -16,7 +16,7 @@ function ContatosAdm() {
         <div>
             <Header />
             <div className='container mx-auto max-w-screen-xl'>
-                <Tabela uri={uri} colunas={colunas} />
+                <Tabela uri={uri} colunas={colunas} cabecalho={'Contatos Administrativo'} />
             </div>
         </div>
     );
@@ -33,8 +33,8 @@ function ContatosManutencao() {
     return (
         <div>
             <Header />
-            <div className='container mx-auto max-w-screen-xl'>
-                <Tabela uri={uri} colunas={colunas} />
+            <div className='container mx-auto max-w-screen-xl'>                
+                <Tabela uri={uri} colunas={colunas} cabecalho={'Contatos Manutenção'} />
             </div>
         </div>
     );
